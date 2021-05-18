@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: #000;
 }
 
 a {
@@ -13,4 +14,57 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+/* ----------------- contenedor -----------------------  */
+.glider__contain {
+  position: relative;
+  margin: 0 40px;
+}
+.glider-slide {
+  background: #000;
+}
+
+.glider__prev,
+.glider__next {
+  position: absolute;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: none;
+  top: calc(50% - 35px);
+  cursor: pointer;
+  line-height: 30px;
+  text-align: center;
+  background: none;
+  color: #fff;
+  opacity: 20%;
+}
+
+.glider__prev,
+.glider__next {
+  opacity: 100%;
+}
+
+.glider__prev {
+  left: -30px;
+}
+
+.glider__next {
+  right: -30px;
+}
+
+.glider__list {
+  overflow: hidden;
+}
+
+.glider__element {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: #000;
+}
+
+.glider__element > p {
+  color: #000;
 }
