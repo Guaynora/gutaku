@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-
+import { useRouter } from 'next/router';
 
 const Today = () => {
 
@@ -10,6 +10,8 @@ const Today = () => {
     const [child, setChild] = useState(false)
 
     const gliderListRef = useRef(null);
+
+    const router = useRouter()
 
     const whatDay = () => {
         let fecha = new Date().getDay()
@@ -67,6 +69,10 @@ const Today = () => {
         }
     }
 
+    const handleAnimeClick = (mal_id) => {
+        router.push(`/anime/${mal_id}`)
+    }
+
     useEffect(() => {
         whatDay()
         day != null ? getAnimeToday() : console.log('day empty')
@@ -86,12 +92,16 @@ const Today = () => {
         <div className="glider" >
             <div className="glider__contain" >
                 <button className="glider__prev" aria-label="Previous" >
-                    <FontAwesomeIcon icon={faChevronLeft} style={{ width: '30px' }} />
+                    <FontAwesomeIcon icon={faChevronLeft} />
                 </button>
                 <div className="glider__list" ref={gliderListRef} >
                     {
                         today.map(el =>
-                            <div key={el.mal_id} className="glider__element" >
+                            <div
+                                key={el.mal_id}
+                                className="glider__element"
+                                onClick={(e) => handleAnimeClick(el.mal_id)}
+                            >
                                 <img src={el.image_url} alt={el.title} />
                                 <p>{el.title}</p>
                             </div>
@@ -99,7 +109,7 @@ const Today = () => {
                     }
                 </div>
                 <button className="glider__next" aria-label="Next" >
-                    <FontAwesomeIcon icon={faChevronRight} style={{ width: '20px' }} />
+                    <FontAwesomeIcon icon={faChevronRight} />
                 </button>
 
             </div>

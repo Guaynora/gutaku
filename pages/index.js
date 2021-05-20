@@ -13,7 +13,6 @@ export default function Home() {
         <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.7/glider.min.js"></script>
       </Head>
       <Layout>
-        <h1>Main</h1>
         <Today />
       </Layout>
 
