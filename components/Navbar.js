@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fas, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
     return (
@@ -18,6 +20,10 @@ function Navbar() {
                 <Link href="/schedule" >
                     <a>Schedule</a>
                 </Link>
+                <div className="navbar__input" >
+                    <input type="text" className="navbar__input-search" placeholder="Search anime" />
+                    <FontAwesomeIcon icon={faSearch} style={{ width: '20px', color: '#a17bcc' }} />
+                </div>
             </div>
         </nav>
     )
