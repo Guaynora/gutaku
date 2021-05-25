@@ -23,7 +23,11 @@ const anime = ({ info }) => {
                         </div>
                     </div>
                 </div>
-                <iframe width="560" height="443" src={info.trailer_url} title={info.title} frameBorder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="iframe" ></iframe>
+                {
+                    info.trailer_url &&
+                    <iframe width="560" height="443" src={info.trailer_url} title={info.title} frameBorder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="iframe" ></iframe>
+                }
+
             </article>
         </Layout>
     )

@@ -1,11 +1,22 @@
 import Layout from '../components/Layout'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router';
+import Loader from '../components/Loader';
+import Star from '../components/Star';
+import Filter from '../components/Filter';
 
 function top() {
 
     const [top, setTop] = useState([])
+    const [load, setLoad] = useState(false)
+    const router = useRouter()
+
+    const handleAnimeClick = (mal_id) => {
+        router.push(`/anime/${mal_id}`)
+    }
 
     useEffect(async () => {
+        setLoad(true)
         let url = `https://api.jikan.moe/v3/top/anime/1`
         let res = await fetch(url)
         let json = await res.json()
@@ -16,36 +27,44 @@ function top() {
                 setTop(json[clave])
             }
         }
+        setLoad(false)
     }, [])
 
     return (
         <>
             <Layout>
-                <div className="top" >
-                    {
-                        top.map(el =>
-                            <figure key={el.mal_id} className="top__anime" >
-                                <img src={el.image_url} alt={el.title} className="top__anime-img" />
-                                <figcaption className="top__anime-title" >{el.title}</figcaption>
-                            </figure>
-                        )
-                    }
-                </div>
+                <Filter />
+                {
+                    load
+                        ?
+                        <div className="container__load" >
+                            <Loader />
+                        </div>
+                        :
+                        <div className="top" >
+                            {
+                                top.map(el =>
+                                    <figure
+                                        key={el.mal_id}
+                                        className="top__anime"
+                                        onClick={(e) => handleAnimeClick(el.mal_id)}
+                                    >
+                                        <img src={el.image_url} alt={el.title} className="top__anime-img" />
+                                        <figcaption className="top__anime-title" >{el.title}</figcaption>
+                                        <p className="top__anime-rank" >{el.rank}</p>
+                                        <div className="top__score" >
+                                            <Star />
+                                            <p className="top__score-text" >{el.score}</p>
+                                        </div>
+                                    </figure>
+                                )
+                            }
+                        </div>
+                }
+
             </Layout>
         </>
     )
 }
 
 export default top
-
-{/* top.map(el =>
-                                <tr key={el.mal_id} >
-                                    <td>{el.rank}</td>
-                                    <td>
-                                        <img src={el.image_url} alt={el.title} />
-                                        <p>{el.title}</p>
-                                    </td>
-                                    <td>{el.score}</td>
-                                </tr>
-                            )
- */}
