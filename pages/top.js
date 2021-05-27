@@ -9,6 +9,7 @@ function top() {
 
     const [top, setTop] = useState([])
     const [load, setLoad] = useState(false)
+    const [option, setOption] = useState(null)
     const router = useRouter()
 
     const handleAnimeClick = (mal_id) => {
@@ -30,10 +31,29 @@ function top() {
         setLoad(false)
     }, [])
 
+    useEffect(async () => {
+        setLoad(true)
+        let url = `https://api.jikan.moe/v3/top/anime/1/${option}`
+        let res = await fetch(url)
+        let json = await res.json()
+        let claves = Object.keys(json)
+        for (let i = 0; i < claves.length; i++) {
+            let clave = claves[i]
+            if (i === 3) {
+                setTop(json[clave])
+            }
+        }
+        setLoad(false)
+    }, [option])
+
+    const handleFilterClick = (childData) => {
+        setOption(childData.toLowerCase())
+    }
+
     return (
         <>
             <Layout>
-                <Filter />
+                <Filter handleFilterClick={handleFilterClick} />
                 {
                     load
                         ?
@@ -61,7 +81,6 @@ function top() {
                             }
                         </div>
                 }
-
             </Layout>
         </>
     )
