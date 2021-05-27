@@ -4,16 +4,18 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 function Filter({ handleFilterClick }) {
 
-    const FilterClick = (e) => {
+    const [option, setOption] = useState('Select Top')
 
+    const FilterClick = (e) => {
         const top_search = e.target.textContent
+        setOption(top_search)
         handleFilterClick(top_search)
     }
 
     return (
         <div className="dropdown" >
             <div className="dropdown-select" >
-                <span className="select" > Select top</span>
+                <span className="select" > {option}</span>
                 <FontAwesomeIcon icon={faCaretDown} size="1x" />
             </div>
             <div className="dropdown-list" onClick={FilterClick} >

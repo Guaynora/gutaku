@@ -133,6 +133,11 @@ body::-webkit-scrollbar-thumb {
   transition: all 0.5s ease;
 }
 
+.glider-dot {
+  outline: none;
+  border: none;
+}
+
 .glider__dots .glider-dot.active {
   background: var(--secondColor);
 }
