@@ -8,7 +8,6 @@ import AnimeSearchContext, { animeContext } from "../../context/AnimeSearchConte
 function search() {
     const [infoSearch, setInfoSearch] = useState([])
     const [load, setLoad] = useState(false)
-    const [path, setPath] = useState(null)
     const { animeSearch } = useContext(animeContext)
     const router = useRouter()
 
@@ -16,24 +15,19 @@ function search() {
         router.push(`/anime/${mal_id}`)
     }
 
-
     useEffect(async () => {
-        let search = localStorage.getItem('animeSearch')
         setLoad(true)
-        if (search) {
-
-            let url = `https://api.jikan.moe/v3/search/anime?q=${search}&limit=16`
-            let res = await fetch(url)
-            let resSearch = await res.json()
-            let claves = Object.keys(resSearch)
-            for (let i = 0; i < claves.length; i++) {
-                let clave = claves[i]
-                if (i === 3) {
-                    setInfoSearch(resSearch[clave])
-                }
+        let url = `https://api.jikan.moe/v3/search/anime?q=${animeSearch}&limit=16`
+        let res = await fetch(url)
+        let resSearch = await res.json()
+        let claves = Object.keys(resSearch)
+        for (let i = 0; i < claves.length; i++) {
+            let clave = claves[i]
+            if (i === 3) {
+                setInfoSearch(resSearch[clave])
             }
-            setLoad(false)
         }
+        setLoad(false)
     }, [animeSearch])
 
     return (

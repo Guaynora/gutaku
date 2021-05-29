@@ -16,7 +16,6 @@ function InputSearch() {
 
     const inputSubmit = async (e) => {
         e.preventDefault()
-        localStorage.setItem('animeSearch', search);
         setAnimeSearch(search)
         router.push(`/search/${search}`)
     }
