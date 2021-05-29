@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import AnimeSearchContext from '../context/AnimeSearchContext'
 import Navbar from './Navbar'
 
 function Layout({ children }) {

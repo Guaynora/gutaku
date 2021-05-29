@@ -39,4 +39,5 @@ nav a {
   outline: none;
   border: none;
   background: var(--inputBackground);
+  color: var(--white);
 }
