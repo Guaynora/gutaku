@@ -6,38 +6,109 @@
   --shadow: 0 2px 2px 0px #514a9d, 0 2px 10px 0 #514a9d;
 }
 
-nav {
-  background: var(--black);
-  color: var(--white);
-  display: flex;
+.header {
+  position: relative;
   align-items: center;
-  justify-content: space-between;
+  background: var(--black);
   border-bottom: 1px solid var(--secondColor);
   box-shadow: var(--shadow);
-}
-
-.navbar__div {
+  color: var(--white);
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 4rem;
+  z-index: 900;
 }
 
-nav a {
+.navbar {
+  position: absolute;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 4rem 0;
+  text-align: center;
+  background-color: var(--black);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 999;
+}
+
+.navbar.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navbar__a {
   font-size: 20px;
-  margin: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+.navbar__a:hover {
+  background-color: var(--secondColor);
 }
 
 .navbar__input {
-  border-radius: 40px;
-  background: var(--inputBackground);
-  display: flex;
   align-items: center;
-  padding: 5px 10px;
+  background: var(--inputBackground);
+  border-radius: 40px;
+  display: flex;
   margin: 20px;
+  padding: 5px 10px;
 }
 
 .navbar__input-search {
-  outline: none;
-  border: none;
   background: var(--inputBackground);
+  border: none;
   color: var(--white);
+  outline: none;
+}
+
+.none {
+  display: none;
+}
+
+.menu__btn {
+  background-color: var(--secondColor);
+  border: 0;
+  cursor: pointer;
+
+  margin-right: 30px;
+}
+
+.menu__btn svg {
+  fill: var(--white);
+}
+
+@media screen and (min-width: 900px) {
+  .menu__btn {
+    display: none;
+  }
+
+  .navbar {
+    position: relative;
+    width: auto;
+    flex-direction: row;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 800;
+    margin: 0;
+    top: 0;
+    background-color: transparent;
+  }
+
+  .navbar__a {
+    padding: 0 1rem;
+    white-space: nowrap;
+  }
+
+  .navbar__a:hover {
+    background-color: transparent;
+  }
 }

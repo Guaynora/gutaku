@@ -53,34 +53,37 @@ function top() {
     return (
         <>
             <Layout>
-                <Filter handleFilterClick={handleFilterClick} />
-                {
-                    load
-                        ?
-                        <div className="container__load" >
-                            <Loader />
-                        </div>
-                        :
-                        <div className="top" >
-                            {
-                                top.map(el =>
-                                    <figure
-                                        key={el.mal_id}
-                                        className="top__anime"
-                                        onClick={(e) => handleAnimeClick(el.mal_id)}
-                                    >
-                                        <img src={el.image_url} alt={el.title} className="top__anime-img" />
-                                        <figcaption className="top__anime-title" >{el.title}</figcaption>
-                                        <p className="top__anime-rank" >{el.rank}</p>
-                                        <div className="top__score" >
-                                            <Star />
-                                            <p className="top__score-text" >{el.score}</p>
-                                        </div>
-                                    </figure>
-                                )
-                            }
-                        </div>
-                }
+                <div className="top" >
+                    <Filter handleFilterClick={handleFilterClick} />
+                    {
+                        load
+                            ?
+                            <div className="container__load" >
+                                <Loader />
+                            </div>
+                            :
+                            <div className="top__section" >
+                                {
+                                    top.map(el =>
+                                        <figure
+                                            key={el.mal_id}
+                                            className="top__anime"
+                                            onClick={(e) => handleAnimeClick(el.mal_id)}
+                                        >
+                                            <img src={el.image_url} alt={el.title} className="top__anime-img" />
+                                            <figcaption className="top__anime-title" >{el.title}</figcaption>
+                                            <p className="top__anime-rank" >{el.rank}</p>
+                                            <div className="top__score" >
+                                                <Star />
+                                                <p className="top__score-text" >{el.score}</p>
+                                            </div>
+                                        </figure>
+                                    )
+                                }
+                            </div>
+                    }
+
+                </div>
             </Layout>
         </>
     )

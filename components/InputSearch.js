@@ -7,7 +7,7 @@ import { animeContext } from "../context/AnimeSearchContext";
 function InputSearch() {
 
     const [search, setSearch] = useState(null)
-    const { animeSearch, setAnimeSearch } = useContext(animeContext)
+    const { setAnimeSearch } = useContext(animeContext)
     const router = useRouter()
 
     const searchInput = (e) => {
