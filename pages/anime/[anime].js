@@ -8,9 +8,9 @@ const anime = ({ info }) => {
         <Layout>
             <article className="infoanime">
                 <div className="infoanime__sec1">
-                    <img src={info.image_url} alt={info.title} />
-                    <div>
-                        <h3>{info.title}</h3>
+                    <img className="infoanime__sec1-img" src={info.image_url} alt={info.title} />
+                    <div className="infoanime__sec1-infotext" >
+                        <h3 className="infoanime__sec1-title" >{info.title}</h3>
                         <p>{info.synopsis}</p>
                         <p>Date: {date}</p>
                         <div className="infoanime__genres" >

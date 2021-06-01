@@ -67,12 +67,30 @@ const Today = () => {
                 },
                 responsive: [
                     {
-                        // screens greater than >= 775px
-                        breakpoint: 450,
+                        // screens greater than >= 350px
+                        breakpoint: 350,
                         settings: {
                             // Set to `auto` and provide item width to adjust to viewport
-                            slidesToShow: 'auto',
-                            slidesToScroll: 'auto',
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            itemWidth: 150,
+                            duration: 0.25
+                        }
+                    }, {
+                        // screens greater than >= 420px
+                        breakpoint: 420,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            itemWidth: 150,
+                            duration: 0.25
+                        }
+                    }, {
+                        // screens greater than >= 75px
+                        breakpoint: 750,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 4,
                             itemWidth: 150,
                             duration: 0.25
                         }
@@ -125,7 +143,7 @@ const Today = () => {
                                 onClick={(e) => handleAnimeClick(el.mal_id)}
                             >
                                 <img src={el.image_url} alt={el.title} />
-                                <p>{el.title}</p>
+                                <p className="glider__element-title" >{el.title}</p>
                             </div>
                         )
                     }
