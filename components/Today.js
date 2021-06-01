@@ -73,6 +73,7 @@ const Today = () => {
                             // Set to `auto` and provide item width to adjust to viewport
                             slidesToShow: 3,
                             slidesToScroll: 3,
+                            draggable: true,
                             itemWidth: 150,
                             duration: 0.25
                         }
@@ -82,6 +83,7 @@ const Today = () => {
                         settings: {
                             slidesToShow: 3,
                             slidesToScroll: 3,
+                            draggable: true,
                             itemWidth: 150,
                             duration: 0.25
                         }
@@ -91,6 +93,7 @@ const Today = () => {
                         settings: {
                             slidesToShow: 4,
                             slidesToScroll: 4,
+                            draggable: true,
                             itemWidth: 150,
                             duration: 0.25
                         }
@@ -100,6 +103,7 @@ const Today = () => {
                         settings: {
                             slidesToShow: 5,
                             slidesToScroll: 5,
+                            draggable: true,
                             itemWidth: 150,
                             duration: 0.25
                         }
