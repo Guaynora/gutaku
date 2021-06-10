@@ -24,14 +24,11 @@ a {
   box-sizing: border-box;
 }
 
-/* ----------------- scroll -----------------------  */
-body::-webkit-scrollbar {
-  width: 10px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: var(--secondColor);
-  border-radius: 10px;
+/* --------------- subtitle ------------------------ */
+.subtitle {
+  margin-top: 6rem;
+  margin-left: 3.125rem;
+  color: var(--white);
 }
 
 /* ----------------- spiner loader -----------------------  */
@@ -64,122 +61,6 @@ body::-webkit-scrollbar-thumb {
 
   100% {
     transform: rotate(360deg);
-  }
-}
-
-/* --------------- infoanime -----------------------*/
-
-.infoanime {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  width: 70%;
-  margin: auto;
-  margin-bottom: 1.875rem;
-  margin-top: 8rem;
-}
-
-.infoanime__sec1 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: var(--white);
-}
-
-.infoanime__sec1-img {
-  width: 17.5rem;
-  height: 25rem;
-}
-
-.infoanime__sec1 p {
-  text-align: justify;
-}
-
-.infoanime__sec1-infotext {
-  margin-left: 3.125em;
-}
-
-.infoanime__sec1 h3 {
-  font-size: 1.875em;
-}
-
-.infoanime__genres {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.infoanime__genres-p {
-  margin-right: 0.625em;
-}
-
-.infoanime__listgenres {
-  display: flex;
-  flex-direction: row;
-  white-space: nowrap;
-}
-
-.infoanime__item-genre {
-  margin-right: 0.625em;
-  background: var(--primarycolor);
-  padding: 0.3125em;
-  border-radius: 0.625em;
-}
-
-.infoanime__item-genre:hover {
-  background: var(--secondColor);
-  cursor: pointer;
-  transition: all 0.5s;
-}
-
-.iframe {
-  margin-top: 3.125rem;
-  width: 100%;
-}
-
-@media screen and (max-width: 770px) {
-  .infoanime {
-    font-size: 12px;
-  }
-  .infoanime__sec1 {
-    width: 100%;
-  }
-
-  .infoanime__sec1-img {
-    width: 13rem;
-    height: 20rem;
-  }
-
-  .infoanime__sec1-infotext {
-    width: 60%;
-  }
-
-  .infoanime__genres {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .infoanime__listgenres {
-    flex-wrap: wrap;
-  }
-}
-
-@media screen and (max-width: 430px) {
-  .infoanime__sec1 {
-    flex-direction: column;
-    justify-content: center;
-  }
-  .infoanime__sec1-infotext {
-    width: 100%;
-    margin: 0;
-  }
-  .infoanime__sec1-title {
-    text-align: center;
-  }
-
-  .iframe {
-    width: 100%;
-    height: 20em;
   }
 }
 
