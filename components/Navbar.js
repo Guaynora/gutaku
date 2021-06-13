@@ -15,7 +15,7 @@ function Navbar() {
       <header>
         <div>
           <Link href="/">
-            <a>Gutaku</a>
+            <a>GUTAKU</a>
           </Link>
         </div>
         <nav>
@@ -25,8 +25,8 @@ function Navbar() {
           <Link href="/top">
             <a>Top Anime</a>
           </Link>
-          <Link href="/schedule">
-            <a>Schedule</a>
+          <Link href="/about">
+            <a>About</a>
           </Link>
           <InputSearch />
         </nav>
@@ -65,6 +65,13 @@ function Navbar() {
         }
         a {
           color: ${colors.white};
+        }
+
+        div a {
+          color: #a17bcc;
+          margin-left: 50px;
+          font-weight: bold;
+          font-size: 30px;
         }
 
         nav {

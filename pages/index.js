@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
+import { colors } from "../styles/theme";
 import AnimeCarrousel from "../components/AnimeCarrousel";
+import Hero from "../components/Hero";
 
 export default function Home() {
   return (
@@ -14,11 +16,7 @@ export default function Home() {
         {/* twitter and other red social */}
         <meta name="twitter:card" content="summary" />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:title"
-          name="twitter:title"
-          content="Anime website made with nextjs "
-        />
+        <meta property="og:title" name="twitter:title" content="Gutaku" />
         <meta
           property="og:description"
           name="twitter:description"
@@ -31,11 +29,20 @@ export default function Home() {
         />
       </Head>
       <Layout>
-        <h2 className="subtitle">Today Relases</h2>
+        <Hero />
+        <h3 className="subtitle">Today Releases</h3>
         <AnimeCarrousel option="today" />
-        <h2 className="subtitle">Top Airing</h2>
+        <h3 className="subtitle">Top Airing</h3>
         <AnimeCarrousel option="airing" />
       </Layout>
+      <style jsx>{`
+        h3 {
+          margin-top: 3rem;
+          margin-left: 3.125rem;
+          color: ${colors.white};
+          font-size: 1.5rem;
+        }
+      `}</style>
     </>
   );
 }

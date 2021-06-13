@@ -131,7 +131,7 @@ function AnimeCarrousel({ option }) {
       </div>
       <style jsx>{`
         div {
-          margin: 0 15px;
+          margin: 0 1rem 3rem 1rem;
         }
       `}</style>
     </>

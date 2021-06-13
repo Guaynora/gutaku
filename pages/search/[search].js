@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import Star from "../../components/Star";
 import Loader from "../../components/Loader";
+import { colors } from "../../styles/theme";
 import AnimeSearchContext, {
   animeContext,
 } from "../../context/AnimeSearchContext";
@@ -13,8 +14,8 @@ function search() {
   const { animeSearch } = useContext(animeContext);
   const router = useRouter();
 
-  const handleAnimeClick = (mal_id) => {
-    router.push(`/anime/${mal_id}`);
+  const handleAnimeClick = (malId) => {
+    router.push(`/anime/${malId}`);
   };
 
   useEffect(async () => {
@@ -22,13 +23,7 @@ function search() {
     const url = `https://api.jikan.moe/v3/search/anime?q=${animeSearch}&limit=16`;
     const res = await fetch(url);
     const resSearch = await res.json();
-    const claves = Object.keys(resSearch);
-    for (let i = 0; i < claves.length; i++) {
-      const clave = claves[i];
-      if (i === 3) {
-        setInfoSearch(resSearch[clave]);
-      }
-    }
+    setInfoSearch(resSearch.results);
     setLoad(false);
   }, [animeSearch]);
 
@@ -66,6 +61,63 @@ function search() {
           </div>
         </AnimeSearchContext>
       </Layout>
+      <style jsx>{`
+        .search {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          margin: 3.125rem auto;
+        }
+
+        .search__anime {
+          cursor: pointer;
+          width: 13.75rem;
+          height: 20rem;
+          margin-top: 3.125rem;
+          position: relative;
+        }
+
+        .search__anime-img {
+          height: 100%;
+          width: 100%;
+          transition: all 0.3s ease;
+        }
+
+        .search__anime-title {
+          background-color: ${colors.backgroundText};
+          color: ${colors.white};
+          padding: 0.3125rem;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          overflow: hidden;
+          text-align: center;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .search__anime:hover .search__anime-img {
+          filter: brightness(40%);
+        }
+
+        .search__score {
+          align-items: center;
+          display: flex;
+        }
+
+        .search__score-text {
+          color: ${colors.white};
+          margin-left: 0.625rem;
+        }
+
+        @media screen and (max-width: 430px) {
+          body {
+            font-size: 12px;
+          }
+        }
+      `}</style>
     </>
   );
 }
