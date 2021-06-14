@@ -22,6 +22,7 @@ export default function Home() {
           name="twitter:description"
           content="Hi, i'm jonathan guaynora and i created this anime website to learn react and nextjs"
         />
+        <meta property="og:image" name="twitter:image" content="/meta.png" />
         <meta
           property="og:url"
           name="twitter:url"
