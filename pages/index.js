@@ -10,7 +10,7 @@ export default function Home() {
       <Head>
         <title>Gutaku</title>
         {/* general */}
-        <link rel="canonical" href="https://www.gutaku.ml" />
+        <link rel="canonical" href="https://gutaku-guaynora.vercel.app/" />
         <meta name="author" content="Jonathan Guaynora" />
         <meta name="copyright" content="© 2021 Jonathan Guaynora" />
         {/* twitter and other red social */}
@@ -25,12 +25,12 @@ export default function Home() {
         <meta
           property="og:image"
           name="twitter:image"
-          content="https://www.gutaku.ml/meta.png"
+          content="https://gutaku-guaynora.vercel.app/meta.png"
         />
         <meta
           property="og:url"
           name="twitter:url"
-          content="https://www.gutaku.ml"
+          content="https://gutaku-guaynora.vercel.app/"
         />
       </Head>
       <Layout>
