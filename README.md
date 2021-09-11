@@ -6,7 +6,7 @@ I still have many things to improve, such as the responsive design that it curre
 
 to carry out this project use [Jikan API](https://jikan.moe/)
 
-You can see the result in [gutaku.ml](https://www.gutaku.ml/).
+You can see the result in [gutaku-guaynora.vercel.app/](https://gutaku-guaynora.vercel.app/).
 
 ## Getting Started
 
