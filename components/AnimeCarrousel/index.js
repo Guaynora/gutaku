@@ -72,20 +72,18 @@ function AnimeCarrousel({ option }) {
   };
 
   const urls = {
-    airing: "https://api.jikan.moe/v3/top/anime/1/airing",
-    today: `https://api.jikan.moe/v3/schedule/${day}`,
+    airing: "https://api.jikan.moe/v4/top/anime?filter=airing",
+    today: `https://api.jikan.moe/v4/schedules?filter=${day}`,
   };
 
   const getAnime = async () => {
-    const url = urls[option];
-    const res = await fetch(url);
-    const json = await res.json();
-    const claves = Object.keys(json);
-    for (let i = 0; i < claves.length; i++) {
-      const clave = claves[i];
-      if (i === 3) {
-        setData(json[clave]);
-      }
+    try {
+      const url = urls[option];
+      const res = await fetch(url);
+      const json = await res.json();
+      setData(json.data);
+    } catch (error) {
+      console.log("error", error);
     }
   };
 
@@ -94,9 +92,14 @@ function AnimeCarrousel({ option }) {
   };
 
   useEffect(() => {
-    getAnime();
     const date = new Date().getDay();
     setDay(days[date]);
+  }, []);
+
+  useEffect(() => {
+    if (day !== null) {
+      getAnime();
+    }
   }, [day]);
 
   useEffect(() => {
@@ -109,25 +112,28 @@ function AnimeCarrousel({ option }) {
     }
     handleResize();
   }, []);
+  console.log(data);
 
   return (
     <>
       <div>
-        <Carousel
-          breakPoints={breakPoints}
-          pagination={false}
-          showArrows={arrow}
-        >
-          {data.map((el) => (
-            <Figure
-              key={el.mal_id}
-              onClick={(e) => handleAnimeClick(el.mal_id)}
-            >
-              <Img src={el.image_url} alt={el.title} />
-              <P>{el.title}</P>
-            </Figure>
-          ))}
-        </Carousel>
+        {data && (
+          <Carousel
+            breakPoints={breakPoints}
+            pagination={false}
+            showArrows={arrow}
+          >
+            {data.map((el) => (
+              <Figure
+                key={el.mal_id}
+                onClick={(e) => handleAnimeClick(el.mal_id)}
+              >
+                <Img src={el.images.webp.image_url} alt={el.title} />
+                <P>{el.title}</P>
+              </Figure>
+            ))}
+          </Carousel>
+        )}
       </div>
       <style jsx>{`
         div {
