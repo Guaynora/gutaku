@@ -17,7 +17,10 @@ function InputSearch() {
   const inputSubmit = async (e) => {
     e.preventDefault();
     setAnimeSearch(search);
-    router.push(`/search/${search}`);
+    router.push({
+      pathname: `/search/[search]`,
+      query: { search },
+    });
   };
 
   return (

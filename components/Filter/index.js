@@ -43,9 +43,6 @@ function Filter({ handleFilterClick }) {
             <div className="dropdown-list__item" name="especial">
               Special
             </div>
-            <div className="dropdown-list__item" name="especial">
-              Nothing
-            </div>
           </div>
         )}
       </div>

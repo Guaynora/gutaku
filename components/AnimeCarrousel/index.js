@@ -112,7 +112,6 @@ function AnimeCarrousel({ option }) {
     }
     handleResize();
   }, []);
-  console.log(data);
 
   return (
     <>

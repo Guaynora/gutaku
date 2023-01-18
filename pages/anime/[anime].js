@@ -13,7 +13,7 @@ const anime = ({ info }) => {
       <Layout>
         <section>
           <article>
-            <img src={info.image_url} alt={info.title} />
+            <img src={info.images.webp.image_url} alt={info.title} />
             <div className="infotext">
               <h3>{info.title}</h3>
               <p>{info.synopsis}</p>
@@ -30,13 +30,12 @@ const anime = ({ info }) => {
               </div>
             </div>
           </article>
-          {info.trailer_url && (
+          {info.trailer.embed_url && (
             <iframe
               width="560"
               height="443"
-              src={info.trailer_url}
+              src={info.trailer.embed_url}
               title={info.title}
-              frameBorder="0"
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
@@ -53,10 +52,10 @@ export default anime;
 export async function getServerSideProps(context) {
   const { query } = context;
   const { anime } = query;
-  const res = await fetch(`https://api.jikan.moe/v3/anime/${anime}`);
+  const res = await fetch(`https://api.jikan.moe/v4/anime/${anime}`);
   const info = await res.json();
 
   return {
-    props: { info },
+    props: { info: info.data },
   };
 }

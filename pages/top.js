@@ -17,23 +17,26 @@ function top() {
     router.push(`/anime/${malId}`);
   };
 
+  const typeToFilter = option === "airing" || option === "upcomming";
+
   const urls = {
-    topUrl: "https://api.jikan.moe/v3/top/anime/1",
-    options: `https://api.jikan.moe/v3/top/anime/1/${option}`,
+    topUrl: "https://api.jikan.moe/v4/top/anime",
+    options: `https://api.jikan.moe/v4/top/anime?${
+      typeToFilter ? "filter" : "type"
+    }=${option}`,
   };
 
   const getTop = async (url) => {
     setLoad(true);
     const res = await fetch(url);
     const json = await res.json();
-    setTop(json.top);
+    setTop(json.data);
     setLoad(false);
   };
 
   useEffect(async () => {
     if (option === null) {
       const url = urls.topUrl;
-      console.log(url);
       getTop(url);
     } else if (option === "nothing") {
       const url = urls.topUrl;
@@ -70,7 +73,7 @@ function top() {
                     onClick={(e) => handleAnimeClick(el.mal_id)}
                   >
                     <img
-                      src={el.image_url}
+                      src={el.images.webp.image_url}
                       alt={el.title}
                       className="top__anime-img"
                     />
